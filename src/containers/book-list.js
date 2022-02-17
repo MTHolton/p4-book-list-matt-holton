@@ -6,30 +6,33 @@ import { selectBook } from '../actions/index';
 class BookList extends Component {
     renderList() {
         // this.props.books works here thanks to the mapStateToProps function below
-        return this.props.books.map((book, index)=>{
+        return this.props.books.map(book => {
+            const cn =
+                this.props.activeBook &&
+                this.props.activeBook.title === book.title
+                    ? "list-group-item class-item-mine selected-item-mine"
+                    : "list-group-item class-item-mine";
+                    
             return (
                 <li 
-                    onClick={ () => this.props.selectBook(book) }
-                    key={index}
-                    className="list-group-item">
+                    onClick={() => this.props.selectBook(book)}
+                    key={book.title}
+                    className={cn}
+                >
                     {book.title}
                 </li>
             );
         });
     }
-
     render() {
-        return(
-            <ul className="list-group col-sm-4">
-                {this.renderList()} 
-            </ul>
-        )
+        return <ul className="list-group">{this.renderList()}</ul>;
     }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
-        books: state.books
+        books: state.books,
+        activeBook: state.activeBook
     };
 }
 

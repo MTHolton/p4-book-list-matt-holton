@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.row {
+  margin: 20px;
+}
+
+.class-item-mine:hover {
+  border-color: blue;
+}
+
+.selected-item-mine {
+  background-color: lightgray;
+}
