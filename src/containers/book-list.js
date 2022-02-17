@@ -20,6 +20,8 @@ class BookList extends Component {
                     className={cn}
                 >
                     {book.title}
+                    <br />
+                    {book.numberOfClicks}
                 </li>
             );
         });
